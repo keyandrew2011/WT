@@ -41,7 +41,7 @@ def cancel_timer(silent=False):
     remaining_seconds = 0
     lbl_countdown.config(text="Залишилось: --:--")
     if not silent:
-        lbl_status.config(text="● Таймер скасовано", fg=SUCCESS)
+        lbl_status.config(text=" Таймер скасовано", fg=SUCCESS)
 
 def start_logic(minutes):
     global remaining_seconds, timer_job
