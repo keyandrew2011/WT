@@ -159,6 +159,7 @@ lbl_countdown.pack()
 
 def privet():
     messagebox.showinfo("🇺🇦", "Слава Україні!")
+    print("Героям Слава!")
 
 tk.Button(root, text="🇺🇦", command=privet, bg=BG_COLOR, fg="#EAB308",
           relief="flat", font=("Inter", 12), cursor="hand2",
