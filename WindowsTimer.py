@@ -70,7 +70,7 @@ def start_logic(minutes):
             os.system(cmd)
             lbl_status.config(text=f"● {action_name} через {minutes} хв", fg=DANGER)
 
-       
+
         remaining_seconds = seconds
         update_countdown()
         messagebox.showinfo("Таймер", f"Дія: {action_name}\nЧас: {minutes} хв")
