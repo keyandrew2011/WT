@@ -1,111 +1,48 @@
-# WindowsTimer
+# Windows Timer Pro
+**Automated Power Management Utility for Windows**
 
-Зручна програма для автоматичного вимкнення, перезавантаження та переведення комп’ютера в режим сну через заданий час.
-Створена на Python із використанням Tkinter для простого та зрозумілого графічного інтерфейсу.
-
----
-
-## Короткий опис проєкту
-
-Windows Timer — це десктопна утиліта для Windows, яка дозволяє автоматизувати керування живленням комп’ютера.
-
-За допомогою програми користувач може:
-
-* встановити таймер на вимкнення ПК;
-* запланувати перезавантаження;
-* перевести систему в режим сну;
-* примусово закрити активні програми перед виконанням дії.
+![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D4?style=flat-square&logo=windows)
+![Language: Python](https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python)
 
 ---
 
-## Інсталяція залежностей
-
-### Необхідно:
-
-* Python 3.10 або новіше
-
-### Перевірка встановлення Python:
-
-```bash
-python --version
-```
-
-### Перевірка Tkinter:
-
-```bash
-python -m tkinter
-```
-
-Tkinter входить до стандартної бібліотеки Python, тому окремо встановлювати його не потрібно.
+## 1. Overview
+**Windows Timer Pro** is a lightweight, open-source desktop application designed to automate system power states. Built with Python and the Tkinter framework, it provides a streamlined GUI for scheduling system shutdowns, restarts, and sleep modes without requiring manual command-line interaction.
 
 ---
 
-##  Запуск програми
-
-1. Склонуйте репозиторій:
-
-```bash
-git clone https://github.com/your-username/windows-timer.git
-```
-
-2. Перейдіть у папку проєкту:
-
-```bash
-cd windows-timer
-```
-
-3. Запустіть програму:
-
-```bash
-python WindowsTimer.py
-```
+## 2. Technical Stack
+* **Language:** Python 3.10+
+* **GUI Framework:** Tkinter
+* **API Integration:** Windows Shell (via `os` module)
+* **Build Tool:** PyInstaller (for executable distribution)
 
 ---
 
-##  Опис функціонала
-
-### Основні можливості:
-
-*  Вимкнення комп’ютера через таймер
-*  Перезавантаження системи
-*  Режим сну
-* Примусове завершення програм
-* Скасування всіх запланованих дій
-
-### Інтерфейс:
-
-* Вибір дії через випадаючий список
-* Введення часу у хвилинах
-* Кнопка запуску таймера
-* Кнопка скасування
-* Відображення статусу
+## 3. Core Features
+* **Scheduled Actions:** Native support for `Shutdown`, `Restart`, and `Sleep`.
+* **Force-Close Logic:** Toggleable `/f` flag to terminate applications that prevent system power-off.
+* **Live Countdown:** Real-time visual feedback using recursive logic within the main loop.
+* **Quick Presets:** One-click activation for 15, 30, and 60-minute intervals.
+* **Safe Abort:** Instant cancellation of all pending system power tasks.
 
 ---
 
-## Технічний стек
+## 4. System Requirements
+| Component | Requirement |
+| :--- | :--- |
+| **Operating System** | Windows 10 or Windows 11 |
+| **Python Version** | 3.10 or higher |
+| **Architecture** | x64 / x86 |
 
-* Python 3
-* Tkinter
-* OS module
-
----
-
-## ️ Важливо
-
-Програма працює лише на Windows, оскільки використовує системні команди:
-
-* `shutdown`
-* `rundll32.exe`
-
-Не підтримується на:
-
-* macOS
-* Linux
+> [!CAUTION]
+> This utility utilizes `shutdown.exe` and `rundll32.dll` specifically for the Windows NT kernel. It is **not compatible** with macOS or Linux distributions.
 
 ---
 
-  
+## 5. Installation & Deployment
 
-## Автор
-
-**Andrii Vlasiuk**
+### Manual Setup
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/keyandrew2011/WT]
