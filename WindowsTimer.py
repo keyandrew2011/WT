@@ -20,6 +20,7 @@ COMMANDS = {
 remaining_seconds = 0
 timer_job = None
 
+
 def update_countdown():
     global remaining_seconds, timer_job
     if remaining_seconds > 0:
@@ -32,6 +33,10 @@ def update_countdown():
         lbl_countdown.config(text="Час вийшов")
         timer_job = None
 
+
+        action_name = combo_action.get()
+        if action_name == "Сон (Sleep)":
+            os.system(COMMANDS["Сон (Sleep)"])
 def cancel_timer(silent=False):
     global timer_job, remaining_seconds
     os.system("shutdown -a")
@@ -49,23 +54,26 @@ def start_logic(minutes):
         if minutes < 0:
             raise ValueError
 
-        cancel_timer(True)
+        cancel_timer(True)  # Скидаємо старі таймери
 
         action_name = combo_action.get()
-        action_cmd = COMMANDS[action_name]
-        force = "-f" if var_force.get() else ""
         seconds = minutes * 60
+        force = "-f" if var_force.get() else ""
 
         if action_name == "Сон (Sleep)":
-            os.system(action_cmd)
-            lbl_status.config(text="● ПК засинає...", fg=ACCENT)
+
+            lbl_status.config(text=f"● Сон через {minutes} хв", fg=ACCENT)
         else:
+
+            action_cmd = COMMANDS[action_name]
             cmd = f"{action_cmd} {seconds} {force}"
             os.system(cmd)
             lbl_status.config(text=f"● {action_name} через {minutes} хв", fg=DANGER)
-            remaining_seconds = seconds
-            update_countdown()
-            messagebox.showinfo("Таймер", f"Старий таймер скинуто.\nНовий: {action_name} через {minutes} хв")
+
+       
+        remaining_seconds = seconds
+        update_countdown()
+        messagebox.showinfo("Таймер", f"Дія: {action_name}\nЧас: {minutes} хв")
 
     except ValueError:
         messagebox.showerror("Помилка", "Введи коректне число хвилин")
