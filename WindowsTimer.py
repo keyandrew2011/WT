@@ -3,6 +3,7 @@ from tkinter import messagebox, ttk
 import os
 import json
 import ctypes
+import sys
 
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(1)
@@ -83,7 +84,13 @@ current_lang = "UA"
 save_last_values = True
 default_values = {"h": "0", "m": "0", "s": "0"}
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
 
+    return os.path.join(base_path, relative_path)
 def validate_input(value):
 
     if value == "":
@@ -393,8 +400,9 @@ def open_settings():
 
 
 root = tk.Tk()
-icon = tk.PhotoImage(file=r"C:\Users\HOMEWORK\PycharmProjects\PythonProject5\icon.png")
+icon_path = resource_path("icon.png")
 
+icon = tk.PhotoImage(file=icon_path)
 root.iconphoto(True, icon)
 root.title("Windows Timer")
 
