@@ -4,7 +4,17 @@ import os
 import json
 import ctypes
 import sys
+def resource_path(relative_path):
+    try:
 
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
+icon_path = resource_path("icon.png")
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(1)
 except:
@@ -288,16 +298,19 @@ def cancel_timer(silent=False):
 
 
 def open_settings():
-
     win = tk.Toplevel(root)
-    icon = tk.PhotoImage(file=r"C:\Users\HOMEWORK\PycharmProjects\PythonProject5\icon.png")
-    win.iconphoto(True, icon)
-
     win.title(LANGS[current_lang]["settings_title"])
-
     win.geometry("320x399")
-
     win.configure(bg=BG_COLOR)
+
+
+    icon_path_settings = resource_path("icon.png")
+    try:
+        settings_icon = tk.PhotoImage(file=icon_path_settings)
+        win.iconphoto(False, settings_icon)
+        win.settings_icon = settings_icon
+    except Exception as e:
+        print(f"Не вдалося завантажити іконку налаштувань: {e}")
 
     tk.Label(
         win,
